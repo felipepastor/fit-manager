@@ -26,6 +26,7 @@ export default function Aluno({ students }: { students: Student[] }) {
                             <Table.ColumnHeaderCell>Objetivo</Table.ColumnHeaderCell>
                             <Table.ColumnHeaderCell>Estilo de vida</Table.ColumnHeaderCell>
                             <Table.ColumnHeaderCell>Dedicado</Table.ColumnHeaderCell>
+                            <Table.ColumnHeaderCell>Ações</Table.ColumnHeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
