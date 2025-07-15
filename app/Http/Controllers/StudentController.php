@@ -119,11 +119,6 @@ class StudentController extends Controller
             'observations' => 'required|string|min:10',
         ]);
 
-        // Convert running_frequency_days array to integer
-        if (isset($validated['running_frequency_days'])) {
-            $validated['running_frequency_days'] = \App\Helpers\DayHelper::daysToInteger($validated['running_frequency_days']);
-        }
-
         // Add answered_at timestamp
         $validated['answered_at'] = now();
 
