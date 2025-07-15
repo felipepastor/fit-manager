@@ -43,70 +43,76 @@ export interface User {
 }
 
 export interface Student {
-    id: number;
+    id: string; // Changed to string (UUID)
     name: string;
     email: string;
-    avatar?: string;
+    access_token: string | null; // New field (UUID)
+    answered_at: string | null; // New field (timestamp)
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
 
-    // Personal Information
-    nickname: string;
-    birthday: string;
-    cellphone: string;
-    job: string;
+    // Personal Information (all nullable except name and email)
+    nickname: string | null;
+    birthday: string | null;
+    cellphone: string | null;
+    job: string | null;
 
-    // Physical Measurements
-    height: number;
-    weight: number;
-    body_fat: number;
+    // Physical Measurements (all nullable)
+    height: number | null;
+    weight: number | null;
+    body_fat: number | null;
 
-    // Goals and Objectives
-    objective: string;
-    goals: string;
+    // Goals and Objectives (all nullable)
+    objective: string | null;
+    goals: string | null;
 
-    // Lifestyle
-    life_style: 'sedentary' | 'normal' | 'active' | 'very_active';
-    dedication: 'yes' | 'no';
-    active: 'yes' | 'no';
-    smoke: 'yes' | 'no' | 'sometimes';
-    drink: 'never' | 'rarely' | 'sometimes' | 'often';
-    drink_frequency: number;
-    consultancy_before: 'yes' | 'no';
+    // Lifestyle (all nullable)
+    life_style: 'sedentary' | 'normal' | 'active' | 'very_active' | null;
+    dedication: boolean | null; // Changed from enum to boolean
+    active: boolean | null; // Changed from enum to boolean
+    smoke: 'yes' | 'no' | 'sometimes' | null;
+    drink: 'never' | 'rarely' | 'sometimes' | 'often' | null;
+    drink_frequency: number | null;
+    consultancy_before: boolean | null; // Changed from enum to boolean
 
-    // Training Information
-    training_frequency: number;
-    training_content: 'bodybuilding' | 'cardio' | 'functional' | 'crossfit' | 'pilates';
-    training_history: string;
-    like_training: 'yes' | 'no' | 'sometimes';
-    favorite_training: string;
-    training_days_week: string[];
-    training_affinity: number;
-    training_description: string;
-    training_extra_exercise: string;
-    training_extra_effort: number;
-    training_extra_frequency_days: string[];
+    // Training Information (all nullable)
+    training_frequency: number | null;
+    training_content: 'bodybuilding' | 'cardio' | 'functional' | 'crossfit' | 'pilates' | null;
+    training_history: string | null;
+    like_training: 'yes' | 'no' | 'sometimes' | null;
+    favorite_training: string | null;
+    training_days_week: string[] | null;
+    training_affinity: number | null;
+    training_description: string | null;
+    training_extra_exercise: string | null;
+    training_extra_effort: number | null;
+    training_extra_frequency_days: string[] | null;
 
-    // Running Information
-    running_practice: string;
-    running_frequency: number;
-    running_frequency_days: string[];
-    running_affinity: number;
-    running_description: string;
+    // Running Information (all nullable)
+    running_practice: string | null;
+    running_frequency: number | null;
+    running_frequency_days: string[] | null;
+    running_affinity: number | null;
+    running_description: string | null;
 
-    // Diet and Health
-    do_diet: 'yes' | 'no' | 'sometimes';
-    diet_description: string;
-    orthopedic_issues?: string;
-    training_specificity?: string;
-    sleeping_hours: number;
-    tired_when_wake: 'yes' | 'no' | 'sometimes';
+    // Diet and Health (all nullable)
+    do_diet: 'yes' | 'no' | 'sometimes' | null;
+    diet_description: string | null;
+    orthopedic_issues: string | null;
+    training_specificity: string | null;
+    sleeping_hours: number | null;
+    tired_when_wake: 'yes' | 'no' | 'sometimes' | null;
 
-    // Additional Information
-    observations?: string;
+    // Additional Information (all nullable)
+    observations: string | null;
+}
 
-    // Standard User Fields
-    password?: string;
-    remember_token?: string;
+// Inertia response types
+export interface InertiaStudentResponse {
+    props: {
+        student?: Student;
+        success?: string;
+        [key: string]: unknown;
+    };
 }

@@ -58,7 +58,8 @@ class Student extends Authenticatable
         'tired_when_wake',
         'goals',
         'observations',
-        'password',
+        'access_token',
+        'answered_at',
     ];
 
     /**
@@ -92,5 +93,17 @@ class Student extends Authenticatable
         'training_affinity' => 'integer',
         'training_extra_effort' => 'integer',
         'sleeping_hours' => 'integer',
+        'dedication' => 'boolean',
+        'active' => 'boolean',
+        'consultancy_before' => 'boolean',
+        'answered_at' => 'datetime',
     ];
+
+    /**
+     * Get the teachers (users) associated with this student.
+     */
+    public function teachers()
+    {
+        return $this->belongsToMany(User::class, 'student_user');
+    }
 }
